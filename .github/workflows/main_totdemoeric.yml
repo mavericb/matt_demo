@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://totdemoeric.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_675d319ea83f4d9cb741e63ea6774d3e }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_9ab9fed7eba74e358897afdc841b3a91 }}
+        registry: https://totmattdemo.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_f5e0fc1a642a478eb7d74408554b71a4 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_b73e78546b444410a231f658775ad987 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: totdemoeric.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_675d319ea83f4d9cb741e63ea6774d3e }}/fastapi-demo:${{ github.sha }}
+        tags: totmattdemo.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f5e0fc1a642a478eb7d74408554b71a4 }}/fastapi-demo:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'totdemoeric'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_204399b3230d4b30a2158a46ed8f1fd8 }}
-        images: 'totdemoeric.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_675d319ea83f4d9cb741e63ea6774d3e }}/fastapi-demo:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4d1818be986e41a6a40d549daeccc3e1 }}
+        images: 'totmattdemo.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f5e0fc1a642a478eb7d74408554b71a4 }}/fastapi-demo:${{ github.sha }}'
