@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://totmattdemo.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_5f2786df3c6e445ebc4687c5fea505ba }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_00c1b1f332b5475f95c0f544c7adf9b5 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_4e7227dfabc64e339edd4f06ae3288f1 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_f2037f4d8a014e33a0e750a3a0ea3db5 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: totmattdemo.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_5f2786df3c6e445ebc4687c5fea505ba }}/totmattdemo:${{ github.sha }}
+        tags: totmattdemo.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_4e7227dfabc64e339edd4f06ae3288f1 }}/totmattdemo:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'totdemoeric'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_af26662885d34d1b86f7184695a5124d }}
-        images: 'totmattdemo.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_5f2786df3c6e445ebc4687c5fea505ba }}/totmattdemo:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b1a9ae76979f4bc2a04ae5bf7eaf8c28 }}
+        images: 'totmattdemo.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_4e7227dfabc64e339edd4f06ae3288f1 }}/totmattdemo:${{ github.sha }}'
