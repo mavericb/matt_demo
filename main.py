@@ -1,10 +1,6 @@
-########## main.py ##########
-
 from fastapi import FastAPI
-from pydantic import BaseModel
-
-class Input(BaseModel):
-    text: str
+from demo import overall_chain
+from models import Input, InputModel
 
 app = FastAPI()
 
@@ -15,4 +11,11 @@ def read_root():
 @app.post("/submit")
 async def submit(input: Input):
     return {"message": f"Data submitted is: {input.text}"}
-#
+
+@app.post("/generate-solutions/")
+async def generate_solutions(data: InputModel):
+    try:
+        result = overall_chain({"input": data.input, "perfect_factors": data.perfect_factors})
+        return {"result": result}
+    except Exception as e:
+        return {"error": str(e)}
