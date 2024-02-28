@@ -16,7 +16,7 @@ prompt = PromptTemplate(
 )
 
 chain1 = LLMChain(
-    llm=ChatOpenAI(temperature=0, model="gpt-3.5-turbo", openai_api_key="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"),#settings.OPENAI_API_KEY),
+    llm=ChatOpenAI(temperature=0, model="gpt-3.5-turbo", openai_api_key=settings.OPENAI_API_KEY),
     prompt=prompt,
     output_key="solutions"
 )
