@@ -19,3 +19,5 @@ async def generate_solutions(data: InputModel):
         return {"result": result}
     except Exception as e:
         return {"error": str(e)}
+
+#
